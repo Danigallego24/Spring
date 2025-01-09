@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- CPU -->
+	
+	<bean id="CPU" class="modelo.entidad.Cpu">
+		<property name="manufacturer" value="Intel"></property>
+		<property name="model" value="i7 12700KF"></property>
+		<property name="numberOfCores" value="12"></property>
+		<property name="price" value="320.99"></property>
+	</bean>
+	
+	<!-- GRAPHIC CARD -->
+	
+	<bean id="graphicCard" class="modelo.entidad.GraphicCard">
+		<property name="manufacturer" value="Nvidia"></property>
+		<property name="model" value="RTX 3060Ti"></property>
+		<property name="CUDACores" value="4352"></property>
+		<property name="price" value="350.99"></property>
+		<property name="ram" ref="RAM2"></property>
+	</bean>
+	
+	<!-- RAM FOR GRAPHIC CARD-->
+		
+	<bean id="RAM2" class="modelo.entidad.Ram">
+		<property name="manufacturer" value="Corsair"></property>
+		<property name="size" value="10"></property>
+		<property name="price" value="25.50"></property>
+	</bean>
+	
+	<!-- MOTHERBOARD -->
+	
+	<bean id="motherBoard" class="modelo.entidad.MotherBoard">
+		<property name="manufacturer" value="MSI"></property>
+		<property name="price" value="210"></property>
+		<property name="formFactor" value="ATX"></property>
+	</bean>
+	
+	<!-- RAM -->
+	
+	<bean id="RAM" class="modelo.entidad.Ram" scope="prototype">
+		<property name="manufacturer" value="Corsair"></property>
+		<property name="size" value="16"></property>
+		<property name="price" value="47.99"></property>
+	</bean>
+	
+	<!-- ARRAYLIST RAMs -->
+	 
+	<bean id="ramList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="modelo.entidad.Ram">
+				<ref bean="RAM"/>
+				<ref bean="RAM"/>
+				<ref bean="RAM"/>
+				<ref bean="RAM"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- PERIPHERAL -->
+	
+	<bean id="peripheral" class="modelo.entidad.Peripheral">
+		<property name="type" value="Corsair"></property>
+		<property name="manufacturer" value="16"></property>
+		<property name="price" value="47.99"></property>
+	</bean>
+	
+	<!-- ARRAYLIST PERIPHERALs -->
+	 
+	<bean id="peripheralList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="modelo.entidad.Peripheral">
+				<ref bean="peripheral"/>
+				<ref bean="peripheral"/>
+				<ref bean="peripheral"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- COMPUTER -->
+	
+	<bean id="computer" class="modelo.entidad.Computer">
+		<property name="price" value="0.0"></property>
+		<property name="cpu" ref="CPU"></property>
+		<property name="graphicCard" ref="graphicCard"></property>
+		<property name="motherBoard" ref="motherBoard"></property>
+		<property name="ramList" ref="ramList"></property>
+		<property name="peripheralList" ref="peripheralList"></property>
+	</bean>
+	
+</beans>
