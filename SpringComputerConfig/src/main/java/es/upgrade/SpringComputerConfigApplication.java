@@ -1,4 +1,4 @@
-package es.upgade;
+package es.upgrade;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
